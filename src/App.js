@@ -7,7 +7,7 @@
 export default function App() {
   return (
     <div id="app">
-      WIP
-    </div>
+      WIP 
+    </div> 
   );
 }
