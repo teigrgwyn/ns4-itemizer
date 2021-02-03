@@ -19,12 +19,37 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+/*
+  Theme:
+    Bluish: #20232A
+    Dark Bluish: #0D1117
+    Dark Gray: #181A1B
+*/
+
+/* general app */
 #app {
-  margin: 2%;
+	padding: 2%;
 
   display: flex;
   flex-flow: column;
   justify-content: center;
 
+  border: 1px solid crimson;
+}
+
+/* search component */
+#search {
+  display: flex;
+  justify-content: center;
+  border: 1px solid crimson;
+}
+
+#search input {
+	text-align: center;
+}
+
+/* cards component */
+#cards {
+  display: flex;
   border: 1px solid crimson;
 }

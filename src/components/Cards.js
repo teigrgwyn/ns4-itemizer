@@ -1,11 +1,8 @@
 // dependencies
-import { useState } from 'react';
-
-// styles
-import '../styles/Cards.css';
+// import { useState } from 'react';
 
 export default function Cards(props) {
-  const { displayCards, setDisplayCards } = props;
+  // const { displayCards, setDisplayCards } = props;
 
   return (
     <div id="cards">

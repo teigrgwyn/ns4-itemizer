@@ -1,15 +1,23 @@
 // dependencies
-import { useState } from 'react';
-
-// styles
-import '../styles/Search.css';
+// import { useState } from 'react';
 
 export default function Search(props) {
-  const { query, setQuery } = props;
+  const { query, onQueryChange } = props;
+
+  const test = event => {
+    event.preventDefault();
+  }
 
   return (
     <div id="search">
-      <h1>search</h1>
+      <form>
+        <input onSubmit={test}
+          placeholder='search'
+          name='text'
+          value={query.text}
+          onChange={onQueryChange}
+        />
+      </form>
     </div> 
   )
 }

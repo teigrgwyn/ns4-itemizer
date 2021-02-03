@@ -3,26 +3,28 @@ import { useState } from 'react';
 
 // components
 import Search from './components/Search';
-import Cards from './components/Cards';
+// import Cards from './components/Cards';
 
 // styles
 import './App.css';
 
-/*
-  Theme:
-    Bluish: #20232A
-    Dark Gray: #181A1B
-*/
+const initialQuery = {
+  text: ''
+}
 
 export default function App() {
-  const [query, setQuery] = useState('');
-  const [displayCards, setDisplayCards] = useState([]);
-  const [savedCards, setSavedCards] = useState([]);
+  const [query, setQuery] = useState(initialQuery);
+  // const [displayCards, setDisplayCards] = useState([]);
+  // const [savedCards, setSavedCards] = useState([]);
+
+  const onQueryChange = event => {
+    setQuery({ ...query, [event.target.name]: event.target.value });
+  }
 
   return (
     <div id="app">
-      <Search query={query} setQuery={} />
-      <Cards displayCards={displayCards} setDisplayCards={} />
+      <Search query={query} onQueryChange={onQueryChange} />
+      {/*<Cards displayCards={displayCards} setDisplayCards={onSetDisplayCards()} />*/}
     </div> 
   )
 }
