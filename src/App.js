@@ -43,7 +43,8 @@ export default function App() {
     setQuery({ ...query, [event.target.name]: event.target.value });
   }
 
-  filteredCards = initialCards.filter(card => !card.name.toLowerCase().indexOf(query.text.toLowerCase()));
+  // current bug, search bar swaps results? but swapping .indexOf queries doesn't update state at all
+  filteredCards = initialCards.filter(card => card.name.toLowerCase().indexOf(query.text.toLowerCase()));
 
   return (
     <div id="app">
