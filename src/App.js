@@ -43,8 +43,7 @@ export default function App() {
     setQuery({ ...query, [event.target.name]: event.target.value });
   }
 
-  // current bug, search bar swaps results? but swapping .indexOf queries doesn't update state at all
-  filteredCards = initialCards.filter(card => card.name.toLowerCase().indexOf(query.text.toLowerCase()));
+  filteredCards = initialCards.filter(card => card.name.toLowerCase().includes(query.text.toLowerCase()));
 
   return (
     <div id="app">
@@ -61,6 +60,7 @@ export default function App() {
       </div>
       {/* ========================= */}
       <div id="padding" />
+      {/* ========================= */}
       <div id="cards">
         {
           filteredCards.map(card => (
