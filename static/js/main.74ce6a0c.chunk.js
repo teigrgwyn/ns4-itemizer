@@ -1,2 +1,0 @@
-(this["webpackJsonpns4-itemizer"]=this["webpackJsonpns4-itemizer"]||[]).push([[0],{22:function(e,t,n){"use strict";n.r(t);var i=n(3),r=n(9),s=n.n(r),c=n(11);function d(){return Object(i.jsx)("div",{id:"app",children:"WIP"})}s.a.render(Object(i.jsx)(c.a,{children:Object(i.jsx)(d,{})}),document.getElementById("root"))}},[[22,1,2]]]);
-//# sourceMappingURL=main.74ce6a0c.chunk.js.map
