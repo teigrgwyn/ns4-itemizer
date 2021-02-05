@@ -34,15 +34,12 @@ body {
 	padding: 2%;
 	background-color: #0D1117;
 	font-family: 'Balsamiq Sans';
-};
+}
 
 /* enclosed app */
 #app {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
-  border: 1px solid crimson;
 }
 
 /* search section */
@@ -111,7 +108,7 @@ body {
 	border: 1px solid yellow;
 }
 
-.card-level2 {
+.card-level-line {
 	display: flex;
 	justify-content: center;
 

@@ -116,41 +116,41 @@ export default function App() {
 
   return (
     <div id="app">
-      {/* ========================= */}
-      <div id="query">
-        <input
-          name='text'
-          value={query.text}
-          onChange={onQueryChange}
-          placeholder='search'
-          spellCheck='false'
-          autoComplete='off'
-        />
-      </div>
-      {/* ========================= */}
-      <div id="padding" />
-      {/* ========================= */}
-      <div id="cards">
-        {
-          filteredCards.map(card => (
-            <div className='card' key={card.id}>
-              <h1 className='card-name'>{card.name}</h1>
-              <div className='card-level2'>
-                <h2 className='card-level'>{card.level}</h2>
+        {/* ========================= */}
+        <div id="query">
+          <input
+            name='text'
+            value={query.text}
+            onChange={onQueryChange}
+            placeholder='search'
+            spellCheck='false'
+            autoComplete='off'
+          />
+        </div>
+        {/* ========================= */}
+        <div id="padding" />
+        {/* ========================= */}
+        <div id="cards">
+          {
+            filteredCards.map(card => (
+              <div className='card' key={card.id}>
+                <h1 className='card-name'>{card.name}</h1>
+                <div className='card-level-line'>
+                  <h2 className='card-level'>{card.level}</h2>
+                </div>
+                <div className='card-info'>
+                  <h2 className='card-base'>Base: {card.base}</h2>
+                  <h2 className='card-enhancement'>Enhancement: {card.enhancement}</h2>
+                  <h2>Keen: {card.keen ? 'True' : 'False'}</h2>
+                  <h2>Damage:</h2>
+                  <h2>~{card.phys}</h2>
+                  <h2>~{card.ele}</h2>
+                </div>
               </div>
-              <div className='card-info'>
-                <h2 className='card-base'>Base: {card.base}</h2>
-                <h2 className='card-enhancement'>Enhancement: {card.enhancement}</h2>
-                <h2>Keen: {card.keen ? 'True' : 'False'}</h2>
-                <h2>Damage:</h2>
-                <h2>~{card.phys}</h2>
-                <h2>~{card.ele}</h2>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-      {/* ========================= */} 
+            ))
+          }
+        </div>
+        {/* ========================= */} 
     </div> 
   )
 }
