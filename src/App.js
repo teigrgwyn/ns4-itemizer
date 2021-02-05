@@ -1,5 +1,14 @@
+/*
+  Theme:
+    Bluish: #20232A
+    Dark Bluish: #0D1117
+		Dark Gray: #181A1B
+		Near Black: #0D0D0D
+*/
+
 // dependencies
 import { useState } from 'react';
+import styled from 'styled-components';
 
 // components
 import Search from './components/Search';
@@ -14,9 +23,14 @@ export default function App() {
   }
 
   return (
-    <div id="app">
+    <TopDiv id="app">
       <Search query={query} onQueryChange={onQueryChange} />
       <Items query={query} />
-    </div> 
+    </TopDiv> 
   )
 }
+
+const TopDiv = styled.div `
+  display: flex;
+  flex-direction: column;
+`
