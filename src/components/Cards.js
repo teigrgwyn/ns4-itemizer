@@ -19,7 +19,9 @@ export default function Items(props) {
       {
         filteredItems.map(card => (
           <div className='card' key={card.id}>
-            <h1 className='card-name'>{card.name}</h1>
+            <div className='card-name-div'>
+              <h1 className='card-name'>{card.name}</h1>
+            </div>
             <div className='card-level-line'>
               <h2 className='card-level'>{card.level}</h2>
             </div>
@@ -42,7 +44,13 @@ export default function Items(props) {
 const items = [
   // weapons
   {
-    name: "Justice"
+    name: "Justice",
+    level: 20,
+    base: 'Light Hammer',
+    enhancement: 4,
+    keen: true,
+    phys: '2d8 Bludgeoning',
+    ele: '1d8 Positive'
   },
   {
     name: "Voidmind Blade"

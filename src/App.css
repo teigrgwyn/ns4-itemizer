@@ -44,8 +44,13 @@ body {
 
 /* search section */
 #query {
+	padding-bottom: 2%;
+
   display: flex;
   justify-content: center;
+
+	/*border-top: 4px dotted #20232A;*/
+	border-bottom: 2px solid #20232A;
 }
 
 #query input {
@@ -82,9 +87,6 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-
-	/*border-top: 4px dotted #20232A;*/
-	border-top: 2px solid #20232A;
 }
 
 .card {
@@ -98,12 +100,27 @@ body {
 	border: 1px solid crimson;
 }
 
-.card-name {
+.card-name-div {
 	margin: 2.5%;
+	position: relative;
 
+	height: 48px; /* force all titles to consume 2 lines of text */
+
+	border: 1px solid white;
+}
+
+.card-name {
+	/* prevents text-squishing on x-transform */
+	min-width: 100%;
+	
+	/* allows single-line titles to be properly vertically-spaced too */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	/* centers text to middle of line */
 	text-align: center;
-
-	border: 1px solid yellow;
 }
 
 .card-level-line {

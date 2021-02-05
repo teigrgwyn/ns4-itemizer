@@ -16,7 +16,6 @@ export default function App() {
   return (
     <div id="app">
       <Search query={query} onQueryChange={onQueryChange} />
-      <div style={{ marginBottom: '2%' }} />
       <Items query={query} />
     </div> 
   )
