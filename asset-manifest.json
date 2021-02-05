@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ns4-itemizer/static/css/main.f242e53d.chunk.css",
+    "main.css": "/ns4-itemizer/static/css/main.eff98237.chunk.css",
     "main.js": "/ns4-itemizer/static/js/main.6d221177.chunk.js",
     "main.js.map": "/ns4-itemizer/static/js/main.6d221177.chunk.js.map",
     "runtime-main.js": "/ns4-itemizer/static/js/runtime-main.2a5f0e4c.js",
@@ -8,13 +8,13 @@
     "static/js/2.358cd2bb.chunk.js": "/ns4-itemizer/static/js/2.358cd2bb.chunk.js",
     "static/js/2.358cd2bb.chunk.js.map": "/ns4-itemizer/static/js/2.358cd2bb.chunk.js.map",
     "index.html": "/ns4-itemizer/index.html",
-    "static/css/main.f242e53d.chunk.css.map": "/ns4-itemizer/static/css/main.f242e53d.chunk.css.map",
+    "static/css/main.eff98237.chunk.css.map": "/ns4-itemizer/static/css/main.eff98237.chunk.css.map",
     "static/js/2.358cd2bb.chunk.js.LICENSE.txt": "/ns4-itemizer/static/js/2.358cd2bb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2a5f0e4c.js",
     "static/js/2.358cd2bb.chunk.js",
-    "static/css/main.f242e53d.chunk.css",
+    "static/css/main.eff98237.chunk.css",
     "static/js/main.6d221177.chunk.js"
   ]
 }
