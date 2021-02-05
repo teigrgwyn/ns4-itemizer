@@ -4,6 +4,7 @@ import { useState } from 'react';
 const initialCards = [
   {
     // required
+    id: 1,
     name: 'Justice',
     level: '20',
     type: 'Weapon',
@@ -16,6 +17,7 @@ const initialCards = [
     ele: '1d8 Posi'
   },
   {
+    id: 2,
     name: 'Voidmind Blade',
     level: '35',
     type: 'Weapon',
@@ -27,6 +29,7 @@ const initialCards = [
     ele: '1d8 Acid, 1d4 Nega'
   },
   {
+    id: 3,
     // required
     name: 'Crafted Enchanted Two-bladed Sword',
     level: '20',
@@ -40,7 +43,8 @@ const initialCards = [
     ele: '1d8 Posi'
   },
   {
-    name: 'Voidmind Blade [1]',
+    id: 4,
+    name: 'Crafted Silvery Scimitar',
     level: '35',
     type: 'Weapon',
 
@@ -52,7 +56,8 @@ const initialCards = [
   },
   {
     // required
-    name: 'Justice [2]',
+    id: 5,
+    name: 'Frozen Cleaver',
     level: '20',
     type: 'Weapon',
 
@@ -64,7 +69,8 @@ const initialCards = [
     ele: '1d8 Posi'
   },
   {
-    name: 'Voidmind Blade [2]',
+    id: 6,
+    name: "Halfling's Gift",
     level: '35',
     type: 'Weapon',
 
@@ -76,7 +82,8 @@ const initialCards = [
   },
   {
     // required
-    name: 'Justice [3]',
+    id: 7,
+    name: 'Frozen Cleaver',
     level: '20',
     type: 'Weapon',
 
@@ -86,185 +93,6 @@ const initialCards = [
     keen: true,
     phys: '2d8 Bludge',
     ele: '1d8 Posi'
-  },
-  {
-    name: 'Voidmind Blade [3]',
-    level: '35',
-    type: 'Weapon',
-
-    base: 'Shortsword',
-    enhancement: 7,
-    keen: true,
-    phys: '2d12 Pierce',
-    ele: '1d8 Acid, 1d4 Nega'
-  },
-  {
-    // required
-    name: 'Justice [4]',
-    level: '20',
-    type: 'Weapon',
-
-    // optional,
-    base: 'Light Hammer',
-    enhancement: 4,
-    keen: true,
-    phys: '2d8 Bludge',
-    ele: '1d8 Posi'
-  },
-  {
-    name: 'Voidmind Blade [4]',
-    level: '35',
-    type: 'Weapon',
-
-    base: 'Shortsword',
-    enhancement: 7,
-    keen: true,
-    phys: '2d12 Pierce',
-    ele: '1d8 Acid, 1d4 Nega'
-  },
-  {
-    // required
-    name: 'Justice [5]',
-    level: '20',
-    type: 'Weapon',
-
-    // optional,
-    base: 'Light Hammer',
-    enhancement: 4,
-    keen: true,
-    phys: '2d8 Bludge',
-    ele: '1d8 Posi'
-  },
-  {
-    name: 'Voidmind Blade [5]',
-    level: '35',
-    type: 'Weapon',
-
-    base: 'Shortsword',
-    enhancement: 7,
-    keen: true,
-    phys: '2d12 Pierce',
-    ele: '1d8 Acid, 1d4 Nega'
-  },
-  {
-    // required
-    name: 'Justice [6]',
-    level: '20',
-    type: 'Weapon',
-
-    // optional,
-    base: 'Light Hammer',
-    enhancement: 4,
-    keen: true,
-    phys: '2d8 Bludge',
-    ele: '1d8 Posi'
-  },
-  {
-    name: 'Voidmind Blade [6]',
-    level: '35',
-    type: 'Weapon',
-
-    base: 'Shortsword',
-    enhancement: 7,
-    keen: true,
-    phys: '2d12 Pierce',
-    ele: '1d8 Acid, 1d4 Nega'
-  },
-  {
-    // required
-    name: 'Justice [7]',
-    level: '20',
-    type: 'Weapon',
-
-    // optional,
-    base: 'Light Hammer',
-    enhancement: 4,
-    keen: true,
-    phys: '2d8 Bludge',
-    ele: '1d8 Posi'
-  },
-  {
-    name: 'Voidmind Blade [7]',
-    level: '35',
-    type: 'Weapon',
-
-    base: 'Shortsword',
-    enhancement: 7,
-    keen: true,
-    phys: '2d12 Pierce',
-    ele: '1d8 Acid, 1d4 Nega'
-  },
-  {
-    // required
-    name: 'Justice [8]',
-    level: '20',
-    type: 'Weapon',
-
-    // optional,
-    base: 'Light Hammer',
-    enhancement: 4,
-    keen: true,
-    phys: '2d8 Bludge',
-    ele: '1d8 Posi'
-  },
-  {
-    name: 'Voidmind Blade [8]',
-    level: '35',
-    type: 'Weapon',
-
-    base: 'Shortsword',
-    enhancement: 7,
-    keen: true,
-    phys: '2d12 Pierce',
-    ele: '1d8 Acid, 1d4 Nega'
-  },
-  {
-    // required
-    name: 'Justice [9]',
-    level: '20',
-    type: 'Weapon',
-
-    // optional,
-    base: 'Light Hammer',
-    enhancement: 4,
-    keen: true,
-    phys: '2d8 Bludge',
-    ele: '1d8 Posi'
-  },
-  {
-    name: 'Voidmind Blade [9]',
-    level: '35',
-    type: 'Weapon',
-
-    base: 'Shortsword',
-    enhancement: 7,
-    keen: true,
-    phys: '2d12 Pierce',
-    ele: '1d8 Acid, 1d4 Nega'
-  },
-  {
-    // required
-    name: 'Justice [10]',
-    level: '20',
-    type: 'Weapon',
-
-    // optional,
-    base: 'Light Hammer',
-    enhancement: 4,
-    keen: true,
-    phys: '2d8 Bludge',
-    ele: '1d8 Posi'
-  },
-  {
-    name: 'Voidmind Blade [10]',
-    level: '35',
-    type: 'Weapon',
-
-    base: 'Shortsword',
-    enhancement: 7,
-    keen: true,
-    phys: '2d12 Pierce',
-    ele: '1d8 Acid, 1d4 Nega'
   }
 ]
 
@@ -305,15 +133,19 @@ export default function App() {
       <div id="cards">
         {
           filteredCards.map(card => (
-            <div className='card' key={card.name}>
-              <h3>{card.name}</h3>
-              <h4>Level: {card.level}</h4>
-              <h4>Base: {card.base}</h4>
-              <h4>Enhancement: {card.enhancement}</h4>
-              <h4>Keen: {card.keen ? 'True' : 'False'}</h4>
-              <h4>Damage:</h4>
-              <h4>~{card.phys}</h4>
-              <h4>~{card.ele}</h4>
+            <div className='card' key={card.id}>
+              <h1 className='card-name'>{card.name}</h1>
+              <div className='card-level2'>
+                <h2 className='card-level'>{card.level}</h2>
+              </div>
+              <div className='card-info'>
+                <h2 className='card-base'>Base: {card.base}</h2>
+                <h2 className='card-enhancement'>Enhancement: {card.enhancement}</h2>
+                <h2>Keen: {card.keen ? 'True' : 'False'}</h2>
+                <h2>Damage:</h2>
+                <h2>~{card.phys}</h2>
+                <h2>~{card.ele}</h2>
+              </div>
             </div>
           ))
         }

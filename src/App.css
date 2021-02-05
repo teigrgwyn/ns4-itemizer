@@ -86,19 +86,47 @@ body {
 #cards {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+	justify-content: space-around;
+	padding: 1%;
 
   border: 1px solid crimson;
 }
 
 .card {
 	margin: 1%;
-	padding: 0.5%;
 	
 	width: 150px;
 	height: 200px;
 
 	color: darkgray;
+
+	border: 1px solid crimson;
+}
+
+.card-name {
+	margin: 2.5%;
+
+	text-align: center;
+
+	border: 1px solid yellow;
+}
+
+.card-level2 {
+	display: flex;
+	justify-content: center;
+
+	border: 1px solid blueviolet;
+}
+
+.card-level {
+	border: 1px solid yellow;
+}
+
+.card-info {
+	margin: 2.5%;
+
+	display: flex;
+	flex-direction: column;
 
 	border: 1px solid crimson;
 }
