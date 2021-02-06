@@ -61,12 +61,10 @@ const CardDiv = styled.div `
 	height: 250px;
 
 	color: darkgray; // placeholder
-	border: 1px solid crimson; // placeholder
 `
 
 const CardNameContainer = styled.div `
 	margin: 2.5%;
-  margin-bottom: 5%;
   
   // allow all card properties to be displayed over the card name
   overflow: inset hidden;
@@ -92,7 +90,7 @@ const CardName = styled.h1 `
 	transform: translate(-50%, -50%);
 
 	// centers title to middle of line
-  min-width: 100%;
+  min-width: 90%;
 	text-align: center;
 `
 
@@ -119,7 +117,7 @@ const CardBase = styled.h2 `
 
   // general styling
   background-color: #20232A;
-  box-shadow: 0 0 3px #20232A, 0 0 5px black inset;
+  box-shadow: 0 0 3px #20232A, 0 0 4px black inset;
 	border-radius: 9px;
 	border: 2px solid #20232A;
 `
@@ -151,11 +149,19 @@ const CardLevel = styled.h3 `
 
 const CardInfo = styled.h3 `
 	margin: 2.5%;
+  padding: 5%;
+
+  // hack to make info-box not exceed parent dimensions; 'box-sizing: border-box' doesn't work; may mess with card info styling if there's a lot of content to display
+  height: 65%;
 
   display: flex;
   flex-direction: column;
 
-  border: 1px solid crimson;
+  // general styling
+  background-color: #20232A;
+  box-shadow: 0 0 3px #20232A, 0 0 10px black inset;
+	border-radius: 10px;
+	border: 2px solid #20232A;
 `
 
 const items = [
