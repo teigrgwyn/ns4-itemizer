@@ -99,7 +99,7 @@ const CardBaseContainer = styled.div `
   position: absolute;
   left: 50%;
   // will change depending on base font size
-  transform: translate(-50%, 400%);
+  transform: translate(-50%, 350%);
 
   // centers base to middle of line
   min-width: 100%;

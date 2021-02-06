@@ -38,13 +38,13 @@ const StyledInput = styled.input `
 	background-color: #20232A;
 
 	width: 273px;
-	height: 33px;
+	height: 30px;
 
 	box-shadow: 0 0 3px #20232A, 0 0 10px black inset;
 	border-radius: 10px;
 	border: 2px solid #20232A;
 
-  font-size: 1.092rem;
+  font-size: 0.9rem;
 	text-align: center;
 
   color: darkgray;
