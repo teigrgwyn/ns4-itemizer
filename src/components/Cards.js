@@ -24,13 +24,13 @@ export default function Items(props) {
           <CardDiv className='card' key={card.id}>
             <CardNameContainer className='card-name-div'>
               <CardName className='card-name'>{card.name}</CardName>
-            </CardNameContainer>
-            <CardLevelContainer className='card-level-line'>
+              <CardBaseContainer>
+                <CardBase className='card-base'>{card.base}</CardBase>
+              </CardBaseContainer>
               <CardLevel className='card-level'>{card.level}</CardLevel>
-            </CardLevelContainer>
+            </CardNameContainer>
             {/* 'if (key in card)' will return true if a key exists for that object - can use to determine how to label data for display during render (weapons vs armor vs shields etc) */}
             <CardInfo className='card-info'>
-              <h2 className='card-base'>Base: {card.base}</h2>
               <h2 className='card-enhancement'>Enhancement: {card.enhancement}</h2>
               <h2>Keen: {card.keen ? 'True' : 'False'}</h2>
               <h2>Damage:</h2>
@@ -47,7 +47,7 @@ export default function Items(props) {
 const TopDiv = styled.div `
   padding: 1%;
 
-  /* have cards display uniformly & neatly */
+  // have cards display uniformly & neatly
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -56,9 +56,9 @@ const TopDiv = styled.div `
 const CardDiv = styled.div `
   margin: 1%;
 	
-  /* size of each card */
-	width: 150px;
-	height: 200px;
+  // size of each card
+	width: 170px;
+	height: 250px;
 
 	color: darkgray; // placeholder
 	border: 1px solid crimson; // placeholder
@@ -66,44 +66,90 @@ const CardDiv = styled.div `
 
 const CardNameContainer = styled.div `
 	margin: 2.5%;
-
+  margin-bottom: 5%;
+  
+  // allow all card properties to be displayed over the card name
+  overflow: inset hidden;
+  
   // required for card name to display properly due to text transforms
   position: relative;
 
-  /* force all card names to consume 2 lines of text */
+  // force all card names to consume 2 lines of text
 	height: 48px;
 
-	border: 1px solid white; // placeholder
+  // general styling
+  background-color: #20232A;
+  box-shadow: 0 0 3px #20232A, 0 0 10px black inset;
+	border-radius: 10px;
+	border: 2px solid #20232A;
 `
 
 const CardName = styled.h1 `
-  /* prevents text-squishing on x-transform */
-  min-width: 100%;
-	
-	/* allows single-line titles to be properly vertically-spaced too */
+	// allows single-line titles to be properly vertically-spaced
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 
-	/* centers text to middle of line */
+	// centers title to middle of line
+  min-width: 100%;
 	text-align: center;
 `
 
-// could remove container and use transform on level itself, unless it's like the name container and needs a relative parent and absolute child to transform properly
-const CardLevelContainer = styled.div `
-  // center level in container to make easier to manipulate later
-  display: flex;
-  justify-content: center;
+const CardBaseContainer = styled.div `
+  // move base to bottom of title space
+  position: absolute;
+  left: 50%;
+  // will change depending on base font size
+  transform: translate(-50%, 400%);
 
-	border: 1px solid blueviolet; // placeholder
+  // centers base to middle of line
+  min-width: 100%;
+  text-align: center;
 `
 
-const CardLevel = styled.h2 `
-	border: 1px solid yellow;
+const CardBase = styled.h2 `
+  // force text area to have it's own dynamic area
+  display: inline;
+  padding: 2% 5%;
+
+  background-color: #20232A;
+
+  font-size: 0.6rem;
+
+  // general styling
+  background-color: #20232A;
+  box-shadow: 0 0 3px #20232A, 0 0 5px black inset;
+	border-radius: 9px;
+	border: 2px solid #20232A;
 `
 
-const CardInfo = styled.h2 `
+const CardLevel = styled.h3 `
+  // move level to upper-right of title space
+  position: absolute;
+  // force text to have it's own dynamic area
+  padding: 2%;
+  padding-bottom: 1.5%;
+
+  // will change with other styling changes often
+  left: 100%;
+  transform: translate(-50%, -50%);
+
+  // centers level to middle of line; px scales equally porportional to level font size
+  min-width: 15px;
+  min-height: 15px;
+  text-align: center;
+
+  font-size: 0.75rem;
+
+  // general styling
+  background-color: #20232A;
+  box-shadow: 0 0 3px #20232A, 0 0 5px black inset;
+	border-radius: 9px;
+	border: 2px solid #20232A;
+`
+
+const CardInfo = styled.h3 `
 	margin: 2.5%;
 
   display: flex;
@@ -124,42 +170,63 @@ const items = [
     ele: '1d8 Positive'
   },
   {
-    name: "Voidmind Blade"
+    name: "Voidmind Blade",
+    level: 1,
+    base: 'Shortsword'
   },
   {
-    name: "Light Hammer"
+    name: "Crafted Enchanted Two-bladed Sword",
+    level: 25,
+    base: 'Two-Bladed Sword'
   },
   {
-    name: "Crafted Enchanted Two-bladed Sword"
+    name: "Crafted Silvery Scimitar",
+    level: 20,
+    base: 'Scimitar'
   },
   {
-    name: "Crafted Silvery Scimitar"
+    name: "Frozen Cleaver",
+    level: 20,
+    base: 'Scimitar'
   },
   {
-    name: "Frozen Cleaver"
+    name: "Halfling's Gift",
+    level: 5,
+    base: 'Shortbow'
   },
   {
-    name: "Halfling's Gift"
+    name: "Feon's Staff of the Forest",
+    level: 16,
+    base: 'Quarterstaff'
   },
   {
-    name: "Feon's Staff of the Forest"
+    name: "Staff of the Crashing Surf",
+    level: 25,
+    base: 'Quarterstaff'
   },
   {
-    name: "Staff of the Crashing Surf"
+    name: "Githyanki Double Silver Sword",
+    level: 40,
+    base: 'Two-Bladed Sword'
   },
   {
-    name: "Githyanki Double Silver Sword"
+    name: "Mighty Talon",
+    level: 40,
+    base: 'Greatsword'
   },
   {
-    name: "Mighty Talon"
+    name: "Githyanki Silver Sword",
+    level: 40,
+    base: 'Greatsword'
   },
   {
-    name: "Githyanki Silver Sword"
+    name: "House Dourden's Will",
+    level: 13,
+    base: 'Greatsword'
   },
   {
-    name: "House Dourden's Will"
-  },
-  {
-    name: "Alzaara Guardian Greatsword"
+    name: "Alzaara Guardian Greatsword",
+    level: 25,
+    base: 'Greatsword'
   }
 ]
