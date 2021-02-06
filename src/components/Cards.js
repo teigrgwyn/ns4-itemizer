@@ -1,15 +1,15 @@
 // dependencies
 import styled from 'styled-components';
 
-const CARDS_MAX = 5;
-
-let cardCount = 0;
 let filteredItems = [];
+
+const CARDS_MAX = 5;
+let cardCount = 0;
 
 export default function Items(props) {
   const { query } = props;
 
-  filteredItems = items.filter(card => {
+  filteredItems = sanitizedItems.filter(card => {
     return (
       cardCount >= CARDS_MAX
         ? false
@@ -21,21 +21,21 @@ export default function Items(props) {
     <TopDiv id="cards">
       {
         filteredItems.map(card => (
-          <CardDiv className='card' key={card.id}>
-            <CardNameContainer className='card-name-div'>
-              <CardName className='card-name'>{card.name}</CardName>
+          <CardDiv key={card.id}>
+            <CardNameContainer>
+              <CardName>{card.name}</CardName>
               <CardBaseContainer>
-                <CardBase className='card-base'>{card.base}</CardBase>
+                <CardBase>{card.base}</CardBase>
               </CardBaseContainer>
-              <CardLevel className='card-level'>{card.level}</CardLevel>
+              <CardLevel>{card.level}</CardLevel>
             </CardNameContainer>
             {/* 'if (key in card)' will return true if a key exists for that object - can use to determine how to label data for display during render (weapons vs armor vs shields etc) */}
-            <CardInfo className='card-info'>
-              <h2 className='card-enhancement'>Enhancement: {card.enhancement}</h2>
-              <h2>Keen: {card.keen ? 'True' : 'False'}</h2>
-              <h2>Damage:</h2>
-              <h2>~{card.phys}</h2>
-              <h2>~{card.ele}</h2>
+            <CardInfo>
+              <h3>Enhancement: {card.enhancement}</h3>
+              <h3>Keen: {card.keen ? 'True' : 'False'}</h3>
+              <h3>Damage:</h3>
+              <h3>~{card.phys}</h3>
+              <h3>~{card.ele}</h3>
             </CardInfo>
           </CardDiv>
         ))
@@ -147,7 +147,7 @@ const CardLevel = styled.h3 `
 	border: 2px solid #20232A;
 `
 
-const CardInfo = styled.h3 `
+const CardInfo = styled.div `
 	margin: 2.5%;
   padding: 5%;
 
@@ -177,7 +177,7 @@ const items = [
   },
   {
     name: "Voidmind Blade",
-    level: 1,
+    level: 35,
     base: 'Shortsword'
   },
   {
@@ -236,3 +236,10 @@ const items = [
     base: 'Greatsword'
   }
 ]
+
+// give all items an id to reference when dealing with JSX keys
+let sanitizeCount = 0;
+let sanitizedItems = items.map(item => {
+  sanitizeCount = sanitizeCount+1;
+  return ({ id: sanitizeCount, ...item })
+})

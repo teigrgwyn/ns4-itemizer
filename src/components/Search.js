@@ -22,9 +22,15 @@ const TopDiv = styled.div `
   display: flex;
   justify-content: center;
 
+  padding-top: 2%;
   padding-bottom: 2%;
-  /*border-top: 4px dotted #20232A;*/
   border-bottom: 2px solid #20232A;
+
+  // allows search menu to be sticky
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #0D1117;
 `
 
 const StyledInput = styled.input `
