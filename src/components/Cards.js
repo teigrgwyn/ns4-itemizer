@@ -28,10 +28,10 @@ export default function Items(props) {
                 <CardBase>{card.base}</CardBase>
               </CardBaseContainer>
               <CardLevel>{card.level}</CardLevel>
+              <CardEnhancement>+{card.enhancement}</CardEnhancement>
             </CardNameContainer>
             {/* 'if (key in card)' will return true if a key exists for that object - can use to determine how to label data for display during render (weapons vs armor vs shields etc) */}
             <CardInfo>
-              <h3>Enhancement: {card.enhancement}</h3>
               <h3>Keen: {card.keen ? 'True' : 'False'}</h3>
               <h3>Damage:</h3>
               <h3>~{card.phys}</h3>
@@ -45,7 +45,7 @@ export default function Items(props) {
 }
 
 const TopDiv = styled.div `
-  padding: 1%;
+  padding: 2vh;
 
   // have cards display uniformly & neatly
   display: flex;
@@ -54,17 +54,17 @@ const TopDiv = styled.div `
 `
 
 const CardDiv = styled.div `
-  margin: 1%;
+  margin: 1.5vh;
 	
   // size of each card
-	width: 170px;
-	height: 250px;
+	width: 185px;
+	height: 273px;
 
 	color: darkgray; // placeholder
 `
 
 const CardNameContainer = styled.div `
-	margin: 2.5%;
+	margin: 2%;
   
   // allow all card properties to be displayed over the card name
   overflow: inset hidden;
@@ -113,7 +113,7 @@ const CardBase = styled.h2 `
 
   background-color: #20232A;
 
-  font-size: 0.6rem;
+  font-size: 0.66rem;
 
   // general styling
   background-color: #20232A;
@@ -127,24 +127,31 @@ const CardLevel = styled.h3 `
   position: absolute;
   // force text to have it's own dynamic area
   padding: 2%;
-  padding-bottom: 1.5%;
+  padding-bottom: 1%;
 
   // will change with other styling changes often
   left: 100%;
   transform: translate(-50%, -50%);
 
   // centers level to middle of line; px scales equally porportional to level font size
-  min-width: 15px;
-  min-height: 15px;
+  min-width: 16.5px;
+  min-height: 16.5px;
   text-align: center;
 
-  font-size: 0.75rem;
+  font-size: 0.82rem;
 
   // general styling
   background-color: #20232A;
   box-shadow: 0 0 3px #20232A, 0 0 5px black inset;
-	border-radius: 9px;
+	border-radius: 10px;
 	border: 2px solid #20232A;
+`
+
+// inherit styles from item level; only thing that changes is position
+const CardEnhancement = styled(CardLevel) `
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `
 
 const CardInfo = styled.div `
@@ -178,12 +185,14 @@ const items = [
   {
     name: "Voidmind Blade",
     level: 35,
-    base: 'Shortsword'
+    base: 'Shortsword',
+    enhancement: 7
   },
   {
     name: "Crafted Enchanted Two-bladed Sword",
     level: 25,
-    base: 'Two-Bladed Sword'
+    base: 'Two-Bladed Sword',
+    enhancement: 5
   },
   {
     name: "Crafted Silvery Scimitar",
@@ -213,7 +222,8 @@ const items = [
   {
     name: "Githyanki Double Silver Sword",
     level: 40,
-    base: 'Two-Bladed Sword'
+    base: 'Two-Bladed Sword',
+    enhancement: 7
   },
   {
     name: "Mighty Talon",

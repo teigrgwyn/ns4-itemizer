@@ -22,8 +22,8 @@ const TopDiv = styled.div `
   display: flex;
   justify-content: center;
 
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
   border-bottom: 2px solid #20232A;
 
   // allows search menu to be sticky
@@ -37,16 +37,24 @@ const StyledInput = styled.input `
   padding: 5px;
 	background-color: #20232A;
 
-	width: 250px;
-	height: 30px;
+	width: 273px;
+	height: 33px;
 
 	box-shadow: 0 0 3px #20232A, 0 0 10px black inset;
 	border-radius: 10px;
 	border: 2px solid #20232A;
 
+  font-size: 1.092rem;
 	text-align: center;
 
+  color: darkgray;
+
   ::placeholder {
+    color: #0D0D0D;
+  }
+
+  ::selection {
+    background-color: darkgray;
     color: #0D0D0D;
   }
 
