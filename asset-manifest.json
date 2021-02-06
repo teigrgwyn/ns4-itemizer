@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/ns4-itemizer/static/js/main.ee1c2424.chunk.js",
-    "main.js.map": "/ns4-itemizer/static/js/main.ee1c2424.chunk.js.map",
+    "main.js": "/ns4-itemizer/static/js/main.f794b168.chunk.js",
+    "main.js.map": "/ns4-itemizer/static/js/main.f794b168.chunk.js.map",
     "runtime-main.js": "/ns4-itemizer/static/js/runtime-main.2a5f0e4c.js",
     "runtime-main.js.map": "/ns4-itemizer/static/js/runtime-main.2a5f0e4c.js.map",
     "static/js/2.e010884c.chunk.js": "/ns4-itemizer/static/js/2.e010884c.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.2a5f0e4c.js",
     "static/js/2.e010884c.chunk.js",
-    "static/js/main.ee1c2424.chunk.js"
+    "static/js/main.f794b168.chunk.js"
   ]
 }
