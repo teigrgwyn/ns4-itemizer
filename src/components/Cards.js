@@ -1,15 +1,14 @@
 // dependencies
 import styled from 'styled-components';
 
-let filteredItems = [];
-
 const CARDS_MAX = 50;
 
 export default function Items(props) {
   const { query } = props;
 
+  // logic for displaying card limit up to 'CARDS_MAX'
   let cardCount = 0;
-  filteredItems = sanitizedItems.filter(card => {
+  const filteredItems = items.filter(card => {
     if (cardCount <= CARDS_MAX && card.name.toLowerCase().includes(query.text.toLowerCase())) {
       return true && cardCount++;
     }
@@ -17,13 +16,18 @@ export default function Items(props) {
     return false;
   })
 
+  // logic for conditionally displaying render elements
+  const conditionalKeys = {
+    enhancement: false
+  }
+
   return (
     <TopDiv id="cards">
       {
-        filteredItems.map(card => (
+        filteredItems.map((card, index) => (
           //(card.enhancement in card) ? (<CardEnhancement>{card.enhancement}</CardEnhancement>)
           //return (
-            <CardDiv key={card.id}>
+            <CardDiv key={index}>
               <CardNameContainer>
                 <CardName>{card.name}</CardName>
                 <CardBaseContainer>
@@ -253,10 +257,3 @@ const items = [
     base: 'Greatsword'
   }
 ]
-
-// give all items an id to reference when dealing with JSX keys
-let sanitizeCount = 0;
-let sanitizedItems = items.map(item => {
-  sanitizeCount = sanitizeCount+1;
-  return ({ id: sanitizeCount, ...item })
-})
