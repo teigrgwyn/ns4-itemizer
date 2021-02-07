@@ -3,41 +3,44 @@ import styled from 'styled-components';
 
 let filteredItems = [];
 
-const CARDS_MAX = 5;
-let cardCount = 0;
+const CARDS_MAX = 50;
 
 export default function Items(props) {
   const { query } = props;
 
+  let cardCount = 0;
   filteredItems = sanitizedItems.filter(card => {
-    return (
-      cardCount >= CARDS_MAX
-        ? false
-        : card.name.toLowerCase().includes(query.text.toLowerCase())
-    )
+    if (cardCount <= CARDS_MAX && card.name.toLowerCase().includes(query.text.toLowerCase())) {
+      return true && cardCount++;
+    }
+
+    return false;
   })
 
   return (
     <TopDiv id="cards">
       {
         filteredItems.map(card => (
-          <CardDiv key={card.id}>
-            <CardNameContainer>
-              <CardName>{card.name}</CardName>
-              <CardBaseContainer>
-                <CardBase>{card.base}</CardBase>
-              </CardBaseContainer>
-              <CardLevel>{card.level}</CardLevel>
-              <CardEnhancement>+{card.enhancement}</CardEnhancement>
-            </CardNameContainer>
-            {/* 'if (key in card)' will return true if a key exists for that object - can use to determine how to label data for display during render (weapons vs armor vs shields etc) */}
-            <CardInfo>
-              <h3>Keen: {card.keen ? 'True' : 'False'}</h3>
-              <h3>Damage:</h3>
-              <h3>~{card.phys}</h3>
-              <h3>~{card.ele}</h3>
-            </CardInfo>
-          </CardDiv>
+          //(card.enhancement in card) ? (<CardEnhancement>{card.enhancement}</CardEnhancement>)
+          //return (
+            <CardDiv key={card.id}>
+              <CardNameContainer>
+                <CardName>{card.name}</CardName>
+                <CardBaseContainer>
+                  <CardBase>{card.base}</CardBase>
+                </CardBaseContainer>
+                <CardLevel>{card.level}</CardLevel>
+                <CardEnhancement>{card.enhancement}</CardEnhancement>
+              </CardNameContainer>
+              {/* 'if (key in card)' will return true if a key exists for that object - can use to determine how to label data for display during render (weapons vs armor vs shields etc) */}
+              <CardInfo>
+                <h3>Keen: {card.keen ? 'True' : 'False'}</h3>
+                <h3>Damage:</h3>
+                <h3>~{card.phys}</h3>
+                <h3>~{card.ele}</h3>
+              </CardInfo>
+            </CardDiv>
+          //)
         ))
       }
     </TopDiv>
@@ -90,7 +93,7 @@ const CardName = styled.h1 `
 	transform: translate(-50%, -50%);
 
 	// centers title to middle of line
-  min-width: 90%;
+  min-width: 85%;
 	text-align: center;
 `
 
@@ -175,24 +178,28 @@ const items = [
   // weapons
   {
     name: "Justice",
-    level: 20,
     base: 'Light Hammer',
-    enhancement: 4,
+    level: 20,
+    enhancement: '+4',
     keen: true,
-    phys: '2d8 Bludgeoning',
-    ele: '1d8 Positive'
+    damage: [
+      {
+        physical: '2d8',
+        positive: '1d8'
+      }
+    ]
   },
   {
     name: "Voidmind Blade",
     level: 35,
     base: 'Shortsword',
-    enhancement: 7
+    enhancement: '+7'
   },
   {
     name: "Crafted Enchanted Two-bladed Sword",
     level: 25,
     base: 'Two-Bladed Sword',
-    enhancement: 5
+    enhancement: '+5'
   },
   {
     name: "Crafted Silvery Scimitar",
@@ -223,7 +230,7 @@ const items = [
     name: "Githyanki Double Silver Sword",
     level: 40,
     base: 'Two-Bladed Sword',
-    enhancement: 7
+    enhancement: '+7'
   },
   {
     name: "Mighty Talon",
