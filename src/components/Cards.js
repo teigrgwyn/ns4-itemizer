@@ -1,50 +1,45 @@
 // dependencies
 import styled from 'styled-components';
+import './test.css';
 
 const CARDS_MAX = 50;
 
 export default function Items(props) {
   const { query } = props;
 
+  //let filteredItems = items;
   // logic for displaying card limit up to 'CARDS_MAX'
   let cardCount = 0;
   const filteredItems = items.filter(card => {
-    if (cardCount <= CARDS_MAX && card.name.toLowerCase().includes(query.text.toLowerCase())) {
-      return true && cardCount++;
+    if (cardCount < CARDS_MAX && card.name.toLowerCase().includes(query.text.toLowerCase())) {
+      cardCount++;
+      return true;
     }
 
     return false;
   })
 
-  // logic for conditionally displaying render elements
-  const conditionalKeys = {
-    enhancement: false
-  }
-
   return (
     <TopDiv id="cards">
       {
         filteredItems.map((card, index) => (
-          //(card.enhancement in card) ? (<CardEnhancement>{card.enhancement}</CardEnhancement>)
-          //return (
-            <CardDiv key={index}>
-              <CardNameContainer>
-                <CardName>{card.name}</CardName>
-                <CardBaseContainer>
-                  <CardBase>{card.base}</CardBase>
-                </CardBaseContainer>
-                <CardLevel>{card.level}</CardLevel>
-                <CardEnhancement>{card.enhancement}</CardEnhancement>
-              </CardNameContainer>
-              {/* 'if (key in card)' will return true if a key exists for that object - can use to determine how to label data for display during render (weapons vs armor vs shields etc) */}
-              <CardInfo>
-                <h3>Keen: {card.keen ? 'True' : 'False'}</h3>
-                <h3>Damage:</h3>
-                <h3>~{card.phys}</h3>
-                <h3>~{card.ele}</h3>
-              </CardInfo>
-            </CardDiv>
-          //)
+          <CardDiv key={index}>
+            <CardNameContainer>
+              <CardName>{card.name}</CardName>
+              <CardBaseContainer>
+                <CardBase>{card.base}</CardBase>
+              </CardBaseContainer>
+              <CardLevel>{card.level}</CardLevel>
+              {card.enhancement /* uses dynamic render logic */}
+            </CardNameContainer>
+            {/* 'if (key in card)' will return true if a key exists for that object - can use to determine how to label data for display during render (weapons vs armor vs shields etc) */}
+            <CardInfo>
+              <h3>Keen: {card.keen ? 'True' : 'False'}</h3>
+              <h3>Damage:</h3>
+              <h3>~{card.phys}</h3>
+              <h3>~{card.ele}</h3>
+            </CardInfo>
+          </CardDiv>
         ))
       }
     </TopDiv>
@@ -158,7 +153,6 @@ const CardLevel = styled.h3 `
 const CardEnhancement = styled(CardLevel) `
   left: 0;
   top: 50%;
-  transform: translate(-50%, -50%);
 `
 
 const CardInfo = styled.div `
@@ -186,12 +180,10 @@ const items = [
     level: 20,
     enhancement: '+4',
     keen: true,
-    damage: [
-      {
-        physical: '2d8',
-        positive: '1d8'
-      }
-    ]
+    damage: {
+      physical: '2d8',
+      positive: '1d8'
+    }
   },
   {
     name: "Voidmind Blade",
@@ -257,3 +249,12 @@ const items = [
     base: 'Greatsword'
   }
 ]
+
+// logic for conditionally displaying render elements; code ran directly after declaring array because we only need to set these conditional values at application compile-time
+items.map(card => {
+  if (card.hasOwnProperty("enhancement")){
+    Object.defineProperty(card, "enhancement", {value: <CardEnhancement>{card.enhancement}</CardEnhancement>})
+  }
+
+  return card;
+})
