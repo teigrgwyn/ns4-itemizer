@@ -1,6 +1,5 @@
 // dependencies
 import styled from 'styled-components';
-import './test.css';
 
 const CARDS_MAX = 50;
 
@@ -30,11 +29,13 @@ export default function Items(props) {
                 <CardBase>{card.base}</CardBase>
               </CardBaseContainer>
               <CardLevel>{card.level}</CardLevel>
-              {card.enhancement /* uses dynamic render logic */}
+              {/* dynamic render logic */}
+              {card.enhancement}
+              {card.keen}
+              {card.onHit}
             </CardNameContainer>
             {/* 'if (key in card)' will return true if a key exists for that object - can use to determine how to label data for display during render (weapons vs armor vs shields etc) */}
             <CardInfo>
-              <h3>Keen: {card.keen ? 'True' : 'False'}</h3>
               <h3>Damage:</h3>
               <h3>~{card.phys}</h3>
               <h3>~{card.ele}</h3>
@@ -53,6 +54,8 @@ const TopDiv = styled.div `
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  scrollbar-color: black;
 `
 
 const CardDiv = styled.div `
@@ -128,8 +131,8 @@ const CardLevel = styled.h3 `
   // move level to upper-right of title space
   position: absolute;
   // force text to have it's own dynamic area
-  padding: 2%;
-  padding-bottom: 1%;
+  padding: 2.5%;
+  padding-bottom: 1.5%;
 
   // will change with other styling changes often
   left: 100%;
@@ -144,7 +147,7 @@ const CardLevel = styled.h3 `
 
   // general styling
   background-color: #20232A;
-  box-shadow: 0 0 3px #20232A, 0 0 5px black inset;
+  box-shadow: 0 0 3px #20232A, 0 0 4px black inset;
 	border-radius: 10px;
 	border: 2px solid #20232A;
 `
@@ -153,6 +156,25 @@ const CardLevel = styled.h3 `
 const CardEnhancement = styled(CardLevel) `
   left: 0;
   top: 50%;
+`
+
+const CardKeen = styled(CardLevel) `
+  padding: 2% 4.5%;
+  padding-bottom: 0;
+
+  left: 0;
+  top: 100%;
+  transform: translate(-31%, -35%);
+  
+	border-radius: 9px;
+
+  font-size: 0.66rem;
+`
+
+const CardOnHit = styled(CardKeen) `
+  left: 100%;
+  min-width: 20px;
+  transform: translate(-75%, -35%);
 `
 
 const CardInfo = styled.div `
@@ -180,6 +202,12 @@ const items = [
     level: 20,
     enhancement: '+4',
     keen: true,
+    onHit: {
+      effect: 'Daze',
+      chance: '50%',
+      dc: 20,
+      duration: 2
+    },
     damage: {
       physical: '2d8',
       positive: '1d8'
@@ -189,23 +217,28 @@ const items = [
     name: "Voidmind Blade",
     level: 35,
     base: 'Shortsword',
-    enhancement: '+7'
+    enhancement: '+7',
+    keen: true
   },
   {
     name: "Crafted Enchanted Two-bladed Sword",
     level: 25,
     base: 'Two-Bladed Sword',
-    enhancement: '+5'
+    enhancement: '+5',
+    keen: true,
+    onHit: ''
   },
   {
     name: "Crafted Silvery Scimitar",
     level: 20,
-    base: 'Scimitar'
+    base: 'Scimitar',
+    keen: true
   },
   {
     name: "Frozen Cleaver",
     level: 20,
-    base: 'Scimitar'
+    base: 'Scimitar',
+    keen: true
   },
   {
     name: "Halfling's Gift",
@@ -220,40 +253,54 @@ const items = [
   {
     name: "Staff of the Crashing Surf",
     level: 25,
-    base: 'Quarterstaff'
+    base: 'Quarterstaff',
+    keen: true
   },
   {
     name: "Githyanki Double Silver Sword",
     level: 40,
     base: 'Two-Bladed Sword',
-    enhancement: '+7'
+    enhancement: '+7',
+    keen: true
   },
   {
     name: "Mighty Talon",
     level: 40,
-    base: 'Greatsword'
+    base: 'Greatsword',
+    keen: true
   },
   {
     name: "Githyanki Silver Sword",
     level: 40,
-    base: 'Greatsword'
+    base: 'Greatsword',
+    keen: true
   },
   {
     name: "House Dourden's Will",
     level: 13,
-    base: 'Greatsword'
+    base: 'Greatsword',
+    keen: true
   },
   {
     name: "Alzaara Guardian Greatsword",
     level: 25,
-    base: 'Greatsword'
+    base: 'Greatsword',
+    keen: true
   }
 ]
 
 // logic for conditionally displaying render elements; code ran directly after declaring array because we only need to set these conditional values at application compile-time
 items.map(card => {
-  if (card.hasOwnProperty("enhancement")){
+  if (card.hasOwnProperty("enhancement")) {
     Object.defineProperty(card, "enhancement", {value: <CardEnhancement>{card.enhancement}</CardEnhancement>})
+  }
+
+  if (card.hasOwnProperty("keen") && card.keen === true) {
+    Object.defineProperty(card, "keen", {value: <CardKeen>Keen</CardKeen>})
+  }
+
+  if (card.hasOwnProperty("onHit")) {
+    Object.defineProperty(card, "onHit", {value: <CardOnHit>OnHit</CardOnHit>})
   }
 
   return card;
