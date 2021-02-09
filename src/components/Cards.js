@@ -31,11 +31,11 @@ export default function Items(props) {
               <CardLevel>{card.level}</CardLevel>
               {/* dynamic render logic */}
               {card.enhancement}
-              {card.keen}
-              {card.onHit}
             </CardNameContainer>
             {/* 'if (key in card)' will return true if a key exists for that object - can use to determine how to label data for display during render (weapons vs armor vs shields etc) */}
             <CardInfo>
+              {card.keen}
+              {card.onHit}
               <h3>Damage:</h3>
               <h3>~{card.phys}</h3>
               <h3>~{card.ele}</h3>
@@ -131,8 +131,8 @@ const CardLevel = styled.h3 `
   // move level to upper-right of title space
   position: absolute;
   // force text to have it's own dynamic area
-  padding: 2.5%;
-  padding-bottom: 1.5%;
+  padding: 2%;
+  padding-bottom: 1%;
 
   // will change with other styling changes often
   left: 100%;
@@ -158,23 +158,31 @@ const CardEnhancement = styled(CardLevel) `
   top: 50%;
 `
 
-const CardKeen = styled(CardLevel) `
-  padding: 2% 4.5%;
-  padding-bottom: 0;
+const CardKeen = styled.h3 `
+  position: absolute;
+  
+  padding: 0.33% 0.5%;
+  //padding-bottom: 0;
 
-  left: 0;
-  top: 100%;
-  transform: translate(-31%, -35%);
+  //left: 100%;
+  //top: 100%;
+  //transform: translate(-70%, -35%);
   
 	border-radius: 9px;
 
   font-size: 0.66rem;
+
+  // general styling
+  background-color: #20232A;
+  box-shadow: 0 0 3px #20232A, 0 0 4px black inset;
+	border-radius: 10px;
+	border: 2px solid #20232A;
 `
 
 const CardOnHit = styled(CardKeen) `
-  left: 100%;
-  min-width: 20px;
-  transform: translate(-75%, -35%);
+
+  //width: 32px;
+  //transform: translate(-377%, -250%);
 `
 
 const CardInfo = styled.div `
@@ -200,11 +208,11 @@ const items = [
     name: "Justice",
     base: 'Light Hammer',
     level: 20,
-    enhancement: '+4',
+    enhancement: 4,
     keen: true,
     onHit: {
       effect: 'Daze',
-      chance: '50%',
+      chance: 50,
       dc: 20,
       duration: 2
     },
@@ -300,7 +308,7 @@ items.map(card => {
   }
 
   if (card.hasOwnProperty("onHit")) {
-    Object.defineProperty(card, "onHit", {value: <CardOnHit>OnHit</CardOnHit>})
+    Object.defineProperty(card, "onHit", {value: <CardOnHit>On-Hit</CardOnHit>})
   }
 
   return card;
